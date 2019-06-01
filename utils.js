@@ -1,18 +1,31 @@
 const fs = require('fs');
 
 
-
+const notesArray = [];
 
 const addNote = (title, body)=>{
-
-    const note = {
-        title,
-        body
+    try{
+        const note = {
+            title,
+            body
+        }
+        const noteInJSON = JSON.stringify(note);
+        notesArray.push(noteInJSON);
+        console.log(notesArray);
+    
+        fs.writeFileSync('notes.json', notesArray);
+    }catch{
+        const note = {
+            title,
+            body
+        }
+        const noteInJSON = JSON.stringify(note);
+        notesArray.push(noteInJSON);
+        console.log(notesArray);
+    
+        fs.writeFileSync('notes.json', notesArray);
     }
-    const noteInJSON = JSON.stringify(note);
-    console.log(noteInJSON);
 
-    fs.writeFileSync('notes.json', noteInJSON);
 }
 
 module.exports = addNote;
